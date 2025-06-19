@@ -1,0 +1,738 @@
+/* 行政書士の道 - マインドマップ管理画面用CSS */
+
+.gyosei-admin-container {
+    margin-top: 20px;
+}
+
+.gyosei-admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: linear-gradient(135deg, #3f51b5, #303f9f);
+    color: white;
+    border-radius: 5px;
+}
+
+.gyosei-admin-header h2 {
+    margin: 0;
+    color: white;
+}
+
+.gyosei-admin-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.gyosei-stat-card {
+    flex: 1;
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    border-left: 4px solid #3f51b5;
+}
+
+.gyosei-stat-number {
+    font-size: 2em;
+    font-weight: bold;
+    color: #3f51b5;
+    display: block;
+}
+
+.gyosei-stat-label {
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+/* テーブルスタイル */
+.gyosei-mindmap-table {
+    background: white;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.gyosei-mindmap-table th {
+    background: #f8f9fa;
+    border-bottom: 2px solid #3f51b5;
+    font-weight: 600;
+    padding: 15px;
+}
+
+.gyosei-mindmap-table td {
+    padding: 15px;
+    vertical-align: middle;
+}
+
+.gyosei-mindmap-table tr:hover {
+    background: #f8f9fa;
+}
+
+/* ショートコード表示 */
+.shortcode-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.shortcode-code {
+    background: #f1f1f1;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 13px;
+    flex: 1;
+    word-break: break-all;
+}
+
+.copy-shortcode {
+    background: #3f51b5;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.copy-shortcode:hover {
+    background: #303f9f;
+}
+
+.copy-shortcode.copied {
+    background: #4caf50;
+}
+
+/* アクションボタン */
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.btn-edit {
+    background: #2196f3;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 3px;
+    text-decoration: none;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.btn-edit:hover {
+    background: #1976d2;
+    color: white;
+}
+
+.btn-delete {
+    background: #f44336;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+.btn-delete:hover {
+    background: #d32f2f;
+}
+
+/* ステータスバッジ */
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.status-published {
+    background: #e8f5e8;
+    color: #2e7d32;
+}
+
+.status-draft {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+/* フォームスタイル */
+.gyosei-form-container {
+    background: white;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.gyosei-form-row {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.gyosei-form-col {
+    flex: 1;
+}
+
+.gyosei-form-group {
+    margin-bottom: 20px;
+}
+
+.gyosei-form-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.gyosei-form-input,
+.gyosei-form-select,
+.gyosei-form-textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+.gyosei-form-input:focus,
+.gyosei-form-select:focus,
+.gyosei-form-textarea:focus {
+    outline: none;
+    border-color: #3f51b5;
+    box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+}
+
+.gyosei-form-help {
+    font-size: 12px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* JSON エディタ */
+.json-editor-container {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.json-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.json-editor-textarea {
+    width: 100%;
+    min-height: 400px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 13px;
+    line-height: 1.4;
+    background: #2d3748;
+    color: #e2e8f0;
+    border: 1px solid #4a5568;
+    border-radius: 4px;
+    padding: 15px;
+    resize: vertical;
+}
+
+.json-editor-textarea:focus {
+    outline: none;
+    border-color: #3f51b5;
+    box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+}
+
+.json-validator {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.json-valid {
+    background: #e8f5e8;
+    color: #2e7d32;
+    border: 1px solid #4caf50;
+}
+
+.json-invalid {
+    background: #ffebee;
+    color: #c62828;
+    border: 1px solid #f44336;
+}
+
+/* プレビューセクション */
+.preview-section {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 30px;
+}
+
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+.preview-content {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 20px;
+    min-height: 400px;
+}
+
+/* ヘルプセクション */
+.gyosei-help-content {
+    max-width: 800px;
+    background: white;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.gyosei-help-content h2 {
+    margin-top: 30px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3f51b5;
+    color: #3f51b5;
+}
+
+.gyosei-help-content h3 {
+    margin-top: 25px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.gyosei-help-content h4 {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: #555;
+}
+
+.gyosei-help-content pre {
+    background: #2d3748;
+    color: #e2e8f0;
+    padding: 20px;
+    border-radius: 5px;
+    overflow-x: auto;
+    font-size: 13px;
+    line-height: 1.4;
+    margin: 15px 0;
+}
+
+.gyosei-help-content code {
+    background: #f1f1f1;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-family: monospace;
+    font-size: 13px;
+}
+
+.gyosei-help-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.gyosei-help-content table th,
+.gyosei-help-content table td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.gyosei-help-content table th {
+    background: #f8f9fa;
+    font-weight: 600;
+    color: #333;
+}
+
+.gyosei-help-content table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.gyosei-help-content ul,
+.gyosei-help-content ol {
+    padding-left: 20px;
+    margin: 10px 0;
+}
+
+.gyosei-help-content li {
+    margin-bottom: 8px;
+    line-height: 1.5;
+}
+
+/* 設定ページ */
+.settings-section {
+    background: white;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.settings-section h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #3f51b5;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.settings-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 4px;
+}
+
+.settings-label {
+    flex: 0 0 200px;
+    font-weight: 600;
+    color: #333;
+}
+
+.settings-input {
+    flex: 1;
+    margin: 0 15px;
+}
+
+.settings-description {
+    flex: 0 0 300px;
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+}
+
+/* 通知・アラート */
+.gyosei-notice {
+    padding: 15px 20px;
+    border-radius: 4px;
+    margin: 20px 0;
+    border-left: 4px solid;
+    position: relative;
+}
+
+.gyosei-notice-success {
+    background: #e8f5e8;
+    border-left-color: #4caf50;
+    color: #2e7d32;
+}
+
+.gyosei-notice-error {
+    background: #ffebee;
+    border-left-color: #f44336;
+    color: #c62828;
+}
+
+.gyosei-notice-warning {
+    background: #fff8e1;
+    border-left-color: #ff9800;
+    color: #f57c00;
+}
+
+.gyosei-notice-info {
+    background: #e3f2fd;
+    border-left-color: #2196f3;
+    color: #1976d2;
+}
+
+.gyosei-notice-dismiss {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.7;
+}
+
+.gyosei-notice-dismiss:hover {
+    opacity: 1;
+}
+
+/* ローディング */
+.gyosei-loading {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #666;
+    font-size: 14px;
+}
+
+.gyosei-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3f51b5;
+    border-radius: 50%;
+    animation: gyosei-spin 1s linear infinite;
+}
+
+@keyframes gyosei-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* タブ */
+.gyosei-tabs {
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 20px;
+}
+
+.gyosei-tab-nav {
+    display: flex;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.gyosei-tab-item {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    margin-right: 5px;
+}
+
+.gyosei-tab-link {
+    display: block;
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #666;
+    transition: all 0.2s;
+}
+
+.gyosei-tab-item:hover .gyosei-tab-link {
+    background: #e9ecef;
+    color: #333;
+}
+
+.gyosei-tab-item.active {
+    background: white;
+    border-bottom: 1px solid white;
+    margin-bottom: -1px;
+}
+
+.gyosei-tab-item.active .gyosei-tab-link {
+    color: #3f51b5;
+    font-weight: 600;
+}
+
+.gyosei-tab-content {
+    padding: 20px 0;
+}
+
+/* ダッシュボード */
+.gyosei-dashboard {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.gyosei-dashboard-main {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.gyosei-dashboard-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.gyosei-widget {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+}
+
+.gyosei-widget-title {
+    margin: 0 0 15px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.gyosei-widget-content {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* 検索フィルター */
+.gyosei-filters {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.gyosei-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gyosei-filter-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: #555;
+}
+
+.gyosei-filter-input,
+.gyosei-filter-select {
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.gyosei-filter-button {
+    background: #3f51b5;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+.gyosei-filter-button:hover {
+    background: #303f9f;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 1200px) {
+    .gyosei-dashboard {
+        grid-template-columns: 1fr;
+    }
+    
+    .gyosei-dashboard-sidebar {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .gyosei-widget {
+        flex: 1;
+        min-width: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .gyosei-admin-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+    
+    .gyosei-admin-stats {
+        flex-direction: column;
+    }
+    
+    .gyosei-form-row {
+        flex-direction: column;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+    }
+    
+    .shortcode-display {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .gyosei-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .gyosei-filter-group {
+        justify-content: space-between;
+    }
+    
+    .settings-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .settings-label,
+    .settings-input,
+    .settings-description {
+        flex: none;
+        margin: 5px 0;
+    }
+    
+    .gyosei-tab-nav {
+        flex-wrap: wrap;
+    }
+    
+    .gyosei-tab-item {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+    
+    .gyosei-dashboard-sidebar {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .gyosei-form-container,
+    .gyosei-help-content,
+    .settings-section {
+        padding: 15px;
+    }
+    
+    .gyosei-mindmap-table th,
+    .gyosei-mindmap-table td {
+        padding: 8px;
+        font-size: 13px;
+    }
+    
+    .shortcode-code {
+        font-size: 11px;
+        padding: 6px 8px;
+    }
+    
+    .json-editor-textarea {
+        font-size: 12px;
+        padding: 10px;
+    }
+}
