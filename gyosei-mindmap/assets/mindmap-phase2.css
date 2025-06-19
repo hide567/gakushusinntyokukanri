@@ -1,0 +1,532 @@
+/* 行政書士の道 - マインドマップ Phase 2 スタイル */
+
+/* 検索機能 */
+.mindmap-search-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-right: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 4px;
+    padding: 2px;
+}
+
+.mindmap-search {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 5px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    width: 150px;
+    outline: none;
+}
+
+.mindmap-search::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.mindmap-search:focus {
+    background: rgba(255,255,255,0.2);
+}
+
+.mindmap-search-btn, .mindmap-search-clear {
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 3px;
+    font-size: 12px;
+}
+
+.mindmap-search-btn:hover, .mindmap-search-clear:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* 検索結果ハイライト */
+.mindmap-node.search-highlighted {
+    animation: searchPulse 1s ease-in-out infinite alternate;
+    box-shadow: 0 0 20px rgba(255, 235, 59, 0.8);
+}
+
+@keyframes searchPulse {
+    from { 
+        transform: translate(-50%, -50%) scale(1.0);
+        box-shadow: 0 0 20px rgba(255, 235, 59, 0.8);
+    }
+    to { 
+        transform: translate(-50%, -50%) scale(1.1);
+        box-shadow: 0 0 30px rgba(255, 235, 59, 1);
+    }
+}
+
+/* モーダルスタイル */
+.mindmap-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mindmap-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.mindmap-modal-content {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.mindmap-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px 15px;
+    border-bottom: 1px solid #eee;
+    background: linear-gradient(135deg, #3f51b5, #303f9f);
+    color: white;
+    border-radius: 12px 12px 0 0;
+}
+
+.mindmap-modal-title {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.mindmap-modal-close {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background 0.2s ease;
+}
+
+.mindmap-modal-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.mindmap-modal-body {
+    padding: 25px;
+}
+
+/* ノード情報セクション */
+.mindmap-node-info {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+}
+
+.mindmap-node-status {
+    flex: 1;
+}
+
+.mindmap-node-progress-display {
+    flex: 1;
+}
+
+.mindmap-status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-size: 12px;
+    font-weight: 600;
+    color: white;
+}
+
+.mindmap-status-badge.completed {
+    background: #4caf50;
+}
+
+.mindmap-status-badge.in-progress {
+    background: #ff9800;
+}
+
+.mindmap-status-badge.not-started {
+    background: #9e9e9e;
+}
+
+.mindmap-progress-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: conic-gradient(#4caf50 0deg, #4caf50 var(--progress), #eee var(--progress), #eee 360deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #333;
+    position: relative;
+}
+
+.mindmap-progress-circle::before {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.mindmap-progress-text {
+    position: relative;
+    z-index: 2;
+    font-size: 12px;
+}
+
+/* セクションスタイル */
+.mindmap-modal-body h4 {
+    color: #303f9f;
+    margin: 20px 0 10px 0;
+    font-size: 16px;
+    border-bottom: 2px solid #e8eaf6;
+    padding-bottom: 5px;
+}
+
+.mindmap-node-description {
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: #fff3e0;
+    border-left: 4px solid #ff9800;
+    border-radius: 0 8px 8px 0;
+}
+
+/* リソースリスト */
+.mindmap-resources-list {
+    display: grid;
+    gap: 10px;
+}
+
+.mindmap-resource-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: #e3f2fd;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
+
+.mindmap-resource-item:hover {
+    background: #bbdefb;
+}
+
+.mindmap-resource-title {
+    font-weight: 500;
+    color: #1976d2;
+    text-decoration: none;
+}
+
+.mindmap-resource-type {
+    background: #2196f3;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+}
+
+/* 学習管理コントロール */
+.mindmap-study-controls {
+    background: #f5f5f5;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
+.mindmap-progress-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.mindmap-progress-slider {
+    flex: 1;
+    height: 6px;
+    border-radius: 3px;
+    background: #ddd;
+    outline: none;
+    appearance: none;
+}
+
+.mindmap-progress-slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #3f51b5;
+    cursor: pointer;
+}
+
+.mindmap-progress-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #3f51b5;
+    cursor: pointer;
+    border: none;
+}
+
+.mindmap-progress-value {
+    font-weight: bold;
+    color: #3f51b5;
+    min-width: 40px;
+}
+
+.mindmap-status-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.mindmap-status-select {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: white;
+}
+
+.mindmap-save-progress {
+    background: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s ease;
+}
+
+.mindmap-save-progress:hover {
+    background: #45a049;
+}
+
+/* メモセクション */
+.mindmap-node-notes {
+    margin-top: 20px;
+}
+
+.mindmap-notes-input {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    resize: vertical;
+    font-family: inherit;
+    line-height: 1.5;
+}
+
+.mindmap-save-notes {
+    background: #2196f3;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s ease;
+}
+
+.mindmap-save-notes:hover {
+    background: #1976d2;
+}
+
+/* ドラッグ&ドロップ機能 */
+.mindmap-node.draggable {
+    cursor: move;
+}
+
+.mindmap-node.dragging {
+    opacity: 0.7;
+    z-index: 1000;
+    transform: translate(-50%, -50%) scale(1.1);
+}
+
+.mindmap-viewport.drag-mode {
+    cursor: default;
+}
+
+/* 接続線の動的更新 */
+.mindmap-line.updating {
+    stroke-dasharray: 5,5;
+    animation: lineDash 1s linear infinite;
+}
+
+@keyframes lineDash {
+    to {
+        stroke-dashoffset: -10;
+    }
+}
+
+/* ノード詳細アイコン */
+.mindmap-node-detail-icon {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 16px;
+    height: 16px;
+    background: #2196f3;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.mindmap-node:hover .mindmap-node-detail-icon {
+    opacity: 1;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .mindmap-search-container {
+        display: none;
+    }
+    
+    .mindmap-modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+    
+    .mindmap-modal-body {
+        padding: 15px;
+    }
+    
+    .mindmap-node-info {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .mindmap-progress-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .mindmap-status-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+/* ダークモード対応 */
+.mindmap-container.dark-mode .mindmap-modal-content {
+    background: #2d3748;
+    color: white;
+}
+
+.mindmap-container.dark-mode .mindmap-modal-header {
+    background: linear-gradient(135deg, #1a202c, #2d3748);
+    border-bottom-color: #4a5568;
+}
+
+.mindmap-container.dark-mode .mindmap-node-info {
+    background: #4a5568;
+}
+
+.mindmap-container.dark-mode .mindmap-node-description {
+    background: #553c2c;
+    border-left-color: #ff9800;
+    color: #e2e8f0;
+}
+
+.mindmap-container.dark-mode .mindmap-resource-item {
+    background: #4a5568;
+    color: white;
+}
+
+.mindmap-container.dark-mode .mindmap-resource-item:hover {
+    background: #5a6578;
+}
+
+.mindmap-container.dark-mode .mindmap-study-controls {
+    background: #4a5568;
+}
+
+.mindmap-container.dark-mode .mindmap-notes-input {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: white;
+}
+
+.mindmap-container.dark-mode .mindmap-status-select {
+    background: #2d3748;
+    border-color: #4a5568;
+    color: white;
+}
+
+/* アニメーション効果 */
+.mindmap-node-appear {
+    animation: nodeAppear 0.5s ease-out;
+}
+
+@keyframes nodeAppear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.mindmap-connection-appear {
+    animation: connectionDraw 0.8s ease-out;
+}
+
+@keyframes connectionDraw {
+    from {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 1000;
+    }
+    to {
+        stroke-dasharray: 1000;
+        stroke-dashoffset: 0;
+    }
+}
