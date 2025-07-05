@@ -1,0 +1,1091 @@
+/**
+ * 学習進捗管理システム - 管理画面スタイル（科目間隔調整済み）
+ */
+
+/* 全体のスタイリング */
+.wrap h1 {
+    margin-bottom: 20px;
+}
+
+.admin-section {
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(0,0,0,.04);
+}
+
+.admin-section h3 {
+    margin-top: 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* 科目構造設定の科目ボタン間隔調整 */
+.subject-section {
+    margin-bottom: 15px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.subject-section h4 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.chapter-settings {
+    margin-top: 20px;
+}
+
+/* 進捗バーのスタイル */
+.progress-bar-container {
+    height: 20px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background-color: #4CAF50;
+    transition: width 0.3s ease;
+}
+
+/* ミニ進捗バー */
+.progress-mini-bar {
+    height: 10px;
+    width: 100px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+.progress-mini-fill {
+    height: 100%;
+    background-color: #4CAF50;
+}
+
+/* 科目追加のアコーディオン（修正版） */
+.subject-add-header {
+    cursor: pointer !important;
+    padding: 15px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    user-select: none;
+    position: relative;
+    z-index: 10;
+    transition: background-color 0.2s ease;
+}
+
+.subject-add-header:hover {
+    background-color: #f0f0f0 !important;
+}
+
+.subject-add-header h3 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.subject-add-toggle-icon {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.subject-add-content {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* 科目構造設定のアコーディオン（修正版） */
+.subject-header {
+    cursor: pointer !important;
+    padding: 15px;
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    user-select: none;
+    position: relative;
+    z-index: 10;
+    transition: background-color 0.2s ease;
+}
+
+.subject-header:hover {
+    background-color: #f0f0f0 !important;
+}
+
+.subject-header h4 {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.subject-toggle-icon {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.subject-content {
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+/* 章・節のアコーディオン（修正版） */
+.chapters-accordion {
+    margin-top: 15px;
+}
+
+.chapter-accordion-item,
+.section-accordion-item {
+    margin-bottom: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.chapter-accordion-header,
+.section-accordion-header {
+    padding: 10px;
+    background-color: #f8f8f8;
+    cursor: pointer !important;
+    display: flex;
+    align-items: center;
+    user-select: none;
+    transition: background-color 0.2s ease;
+    position: relative;
+    z-index: 5;
+}
+
+.chapter-accordion-header:hover,
+.section-accordion-header:hover {
+    background-color: #f0f0f0 !important;
+}
+
+.chapter-toggle-icon,
+.section-toggle-icon {
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    background-color: #eee;
+    border-radius: 50%;
+    margin-right: 10px;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    font-family: monospace;
+    font-size: 14px;
+}
+
+.chapter-title,
+.section-title {
+    flex-grow: 1;
+}
+
+.chapter-progress-indicators,
+.section-progress-indicators {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.understood-icon,
+.mastered-icon {
+    padding: 3px 5px;
+    font-size: 0.8em;
+    border-radius: 3px;
+}
+
+.understood-icon {
+    background-color: #e6f7e6;
+}
+
+.mastered-icon {
+    background-color: #ffebcc;
+}
+
+.chapter-accordion-content,
+.section-accordion-content {
+    padding: 10px;
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+}
+
+/* 項のスタイル */
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.item-title {
+    flex-grow: 1;
+}
+
+.item-checkboxes {
+    display: flex;
+    gap: 10px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+}
+
+/* リセットボタン関連 */
+.reset-progress-container {
+    margin-bottom: 20px;
+}
+
+.reset-progress-button {
+    color: #a00;
+}
+
+.reset-progress-button:hover {
+    color: #dc3232;
+    border-color: #dc3232;
+}
+
+/* 科目タブスタイル（修正版） */
+.progress-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+    z-index: 100;
+}
+
+.progress-tab {
+    padding: 8px 16px;
+    cursor: pointer !important;
+    margin-right: 5px;
+    border: 1px solid #ddd;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    background-color: #f8f8f8;
+    user-select: none;
+    position: relative;
+    z-index: 101;
+    transition: all 0.2s ease;
+    pointer-events: auto;
+}
+
+.progress-tab:hover {
+    background-color: #e8e8e8 !important;
+    transform: translateY(-1px);
+}
+
+.progress-tab.active {
+    background-color: #fff !important;
+    border-bottom-color: #fff !important;
+    margin-bottom: -1px;
+    font-weight: bold;
+    z-index: 102;
+    transform: none !important;
+}
+
+/* 3階層タブ構造スタイル（修正版） */
+.chapter-tabs,
+.section-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.chapter-tab,
+.section-tab {
+    padding: 6px 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    cursor: pointer !important;
+    transition: all 0.2s ease;
+    user-select: none;
+    position: relative;
+    z-index: 8;
+    font-size: 13px;
+}
+
+.chapter-tab:hover,
+.section-tab:hover {
+    background-color: #e0e0e0 !important;
+    transform: translateY(-1px);
+}
+
+.chapter-tab.active,
+.section-tab.active {
+    background-color: #0073aa !important;
+    color: white !important;
+    border-color: #0073aa !important;
+    transform: none !important;
+}
+
+/* 章詳細のスタイル */
+.chapter-details {
+    background-color: #fafafa;
+    padding: 15px;
+    border: 1px solid #e5e5e5;
+    border-radius: 3px;
+    margin-top: 15px;
+}
+
+/* 節詳細のスタイル */
+.section-details {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.section-tabs {
+    margin-bottom: 0;
+}
+
+.section-container {
+    margin-top: 20px;
+}
+
+/* 使い方タブのスタイル */
+.usage-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.usage-section {
+    background-color: #fff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.usage-section h4 {
+    margin-top: 0;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.shortcode-usage {
+    background: #f9f9f9;
+    padding: 15px;
+    border-radius: 5px;
+    border-left: 4px solid #0073aa;
+}
+
+.shortcode-usage code {
+    background: #fff;
+    padding: 3px 5px;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+/* モーダルスタイル */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 100000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    width: 500px;
+    max-width: 90%;
+    box-shadow: 0 5px 15px rgba(0,0,0,.7);
+}
+
+.modal-content h3 {
+    margin-top: 0;
+}
+
+/* 旧形式の互換表示 */
+.legacy-section-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    border: 1px solid #eee;
+    border-radius: 3px;
+    margin-bottom: 5px;
+}
+
+.legacy-item,
+.legacy-chapter {
+    position: relative;
+}
+
+.legacy-item:after,
+.legacy-chapter .chapter-accordion-header:after {
+    content: '(旧形式)';
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 0.8em;
+    color: #999;
+}
+
+/* その他のスタイル */
+.percent-display {
+    font-weight: normal;
+    color: #666;
+}
+
+.section-item {
+    margin-bottom: 10px;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+
+.section-header {
+    padding: 10px;
+    background-color: #f5f5f5;
+    font-weight: bold;
+}
+
+.section-content {
+    padding: 10px;
+}
+
+/* カラーインジケーター */
+.color-indicator {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* アクションボタングループ */
+.action-buttons {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+/* テーブルレスポンシブ */
+.table-responsive {
+    overflow-x: auto;
+    margin-bottom: 20px;
+}
+
+/* フォームコンテナ */
+.form-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* 進捗管理タブ専用の修正CSS */
+.progress-tabs[data-tab-type="progress"] {
+    position: relative;
+    z-index: 100;
+}
+
+.progress-tabs[data-tab-type="progress"] .progress-tab {
+    position: relative;
+    z-index: 101;
+    cursor: pointer !important;
+    user-select: none;
+    pointer-events: auto;
+    transition: all 0.2s ease;
+}
+
+.progress-tabs[data-tab-type="progress"] .progress-tab:not(.active):hover {
+    background-color: #e8e8e8 !important;
+    transform: translateY(-1px);
+}
+
+.progress-tabs[data-tab-type="progress"] .progress-tab.active {
+    background-color: #fff !important;
+    border-bottom-color: #fff !important;
+    font-weight: bold;
+    z-index: 102;
+    transform: none !important;
+}
+
+/* 進捗管理の章アコーディオン専用スタイル */
+.progress-chapter-item {
+    position: relative;
+    z-index: 1;
+}
+
+.progress-chapter-header {
+    position: relative;
+    z-index: 2;
+    cursor: pointer !important;
+    transition: background-color 0.2s ease;
+}
+
+.progress-chapter-header:hover {
+    background-color: #f0f0f0 !important;
+}
+
+.progress-chapter-header .chapter-toggle-icon {
+    transition: transform 0.2s ease;
+    display: inline-block;
+    width: 20px;
+    text-align: center;
+}
+
+/* 章アコーディオンのコンテンツ */
+.progress-chapter-item .chapter-accordion-content {
+    position: relative;
+    z-index: 1;
+    background-color: #fafafa;
+}
+
+/* 科目進捗コンテナの表示制御強化 */
+.subject-progress {
+    opacity: 1;
+    transition: opacity 0.2s ease;
+}
+
+.subject-progress[style*="display: none"] {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.subject-progress[style*="display: block"] {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* イベントバブリング防止のための追加スタイル */
+.progress-tab[data-tab-id] {
+    isolation: isolate;
+}
+
+.progress-chapter-header[data-item-type="chapter"] {
+    isolation: isolate;
+}
+
+/* リアルタイム保存用のインジケーター */
+.admin-saving-indicator {
+    position: fixed;
+    top: 32px;
+    right: 20px;
+    background-color: #0073aa;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 3px;
+    z-index: 99999;
+    display: none;
+    font-size: 13px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* 項目のリアルタイム色変更スタイル */
+.item-row.checked {
+    transition: background-color 0.3s ease;
+}
+
+.item-row.mastered {
+    transition: background-color 0.3s ease;
+}
+
+/* フォーカス時のアウトライン改善 */
+.progress-tab:focus,
+.chapter-tab:focus,
+.section-tab:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 1px;
+}
+
+.progress-chapter-header:focus,
+.subject-header:focus,
+.subject-add-header:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 1px;
+}
+
+/* アニメーション改善 */
+@keyframes tabActivate {
+    from {
+        transform: scale(0.98);
+        opacity: 0.8;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.progress-tab.active,
+.chapter-tab.active,
+.section-tab.active {
+    animation: tabActivate 0.2s ease-out;
+}
+
+/* ローディング状態の改善 */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #ccc;
+    border-top-color: #0073aa;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 1200px) {
+    .usage-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+    
+    .form-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 782px) {
+    /* WordPress管理画面のブレークポイント */
+    .wrap {
+        margin-right: 0;
+    }
+    
+    .admin-section {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 15px;
+    }
+    
+    .usage-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .form-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .progress-tabs {
+        flex-direction: column;
+        border-bottom: none;
+    }
+    
+    .progress-tab {
+        margin-right: 0;
+        margin-bottom: 5px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+    }
+    
+    .progress-tab.active {
+        margin-bottom: 5px;
+    }
+    
+    .chapter-tabs,
+    .section-tabs {
+        flex-direction: column;
+        gap: 3px;
+    }
+    
+    .chapter-tab,
+    .section-tab {
+        width: 100%;
+        text-align: left;
+    }
+    
+    .item-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .item-title {
+        width: 100%;
+    }
+    
+    .item-checkboxes {
+        width: 100%;
+        justify-content: flex-start;
+    }
+    
+    /* テーブルのレスポンシブ対応 */
+    .wp-list-table {
+        border: none;
+    }
+    
+    .wp-list-table thead {
+        display: none;
+    }
+    
+    .wp-list-table tr {
+        display: block;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        background: #fff;
+    }
+    
+    .wp-list-table td {
+        display: block;
+        text-align: left;
+        border: none;
+        padding: 8px 0;
+        border-bottom: 1px solid #eee;
+    }
+    
+    .wp-list-table td:last-child {
+        border-bottom: none;
+    }
+    
+    .wp-list-table td:before {
+        content: attr(data-label) ": ";
+        font-weight: bold;
+        color: #333;
+        margin-right: 5px;
+        display: inline-block;
+        min-width: 80px;
+    }
+    
+    .progress-mini-bar {
+        width: 80px;
+        display: inline-block;
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+    
+    .action-buttons {
+        justify-content: flex-start;
+    }
+    
+    .action-buttons button {
+        flex: 0 0 auto;
+        min-width: 60px;
+    }
+    
+    /* モーダルのレスポンシブ対応 */
+    .modal-content {
+        width: 95% !important;
+        margin: 10px;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .form-table th {
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding-bottom: 5px;
+    }
+    
+    .form-table td {
+        display: block;
+        width: 100%;
+        padding-left: 0;
+    }
+    
+    .progress-tabs[data-tab-type="progress"] {
+        flex-direction: column;
+        border-bottom: none;
+    }
+    
+    .progress-tabs[data-tab-type="progress"] .progress-tab {
+        margin-right: 0;
+        margin-bottom: 5px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .progress-tabs[data-tab-type="progress"] .progress-tab.active {
+        margin-bottom: 5px;
+        border: 2px solid #0073aa;
+    }
+}
+
+@media (max-width: 600px) {
+    .admin-section {
+        padding: 10px;
+    }
+    
+    .subject-header h4,
+    .subject-add-header h3 {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 5px;
+    }
+    
+    
+    .chapter-details,
+    .section-details {
+        padding: 10px;
+    }
+    
+    .chapter-tab,
+    .section-tab {
+        padding: 8px 6px;
+        font-size: 12px;
+    }
+    
+    h5, h6 {
+        font-size: 14px;
+    }
+    
+    .regular-text,
+    .small-text {
+        font-size: 14px;
+        padding: 6px 8px;
+    }
+    
+    /* 項目設定テーブルの改善 */
+    .items-table-container {
+        overflow-x: auto;
+        margin: 0 -10px;
+        padding: 0 10px;
+    }
+    
+    .wp-list-table {
+        min-width: 300px;
+    }
+    
+    .wp-list-table th,
+    .wp-list-table td {
+        padding: 6px;
+        font-size: 12px;
+    }
+    
+    .progress-tab[data-tab-id] {
+        padding: 12px 16px;
+        font-size: 14px;
+    }
+    
+    .progress-chapter-header {
+        padding: 12px 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wrap h1 {
+        font-size: 20px;
+    }
+    
+    .nav-tab-wrapper .nav-tab {
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+    
+    .button {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+    
+    .form-container input[type="text"],
+    .form-container input[type="number"],
+    .form-container input[type="color"] {
+        font-size: 14px;
+    }
+    
+    .description {
+        font-size: 11px;
+    }
+}
+
+/* 印刷用スタイル */
+@media print {
+    .nav-tab-wrapper,
+    .submit,
+    .reset-progress-container,
+    .color-settings-toggle,
+    .color-settings-panel,
+    .modal-overlay,
+    .subject-add-header,
+    .action-buttons,
+    .admin-saving-indicator {
+        display: none !important;
+    }
+    
+    .chapter-accordion-content,
+    .section-content,
+    .subject-content {
+        display: block !important;
+    }
+    
+    .admin-section {
+        break-inside: avoid;
+    }
+    
+    .progress-tabs[data-tab-type="progress"] {
+        display: none !important;
+    }
+    
+    .subject-progress {
+        display: block !important;
+        opacity: 1 !important;
+    }
+    
+    .progress-chapter-item .chapter-accordion-content {
+        display: block !important;
+    }
+}
+
+/* アクセシビリティ改善 */
+.subject-add-header,
+.subject-header,
+.chapter-accordion-header,
+.section-accordion-header {
+    outline: none;
+}
+
+.subject-add-header:focus,
+.subject-header:focus,
+.chapter-accordion-header:focus,
+.section-accordion-header:focus {
+    box-shadow: 0 0 0 2px #0073aa;
+}
+
+button:focus,
+input:focus,
+select:focus {
+    outline: 2px solid #0073aa;
+    outline-offset: 1px;
+}
+/* モバイル対応改善（admin.cssの最後に追加） */
+
+/* モバイルでのタッチ操作改善 */
+@media (max-width: 782px) {
+    .item-checkboxes input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        min-width: 20px;
+        margin-right: 8px;
+        cursor: pointer;
+        -webkit-appearance: checkbox;
+        -moz-appearance: checkbox;
+        appearance: checkbox;
+    }
+    
+    .checkbox-label {
+        padding: 8px 12px;
+        margin: 2px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        min-height: 44px; /* iOS推奨のタッチターゲットサイズ */
+        display: flex !important;
+        align-items: center;
+        justify-content: flex-start;
+        touch-action: manipulation; /* タッチ操作の最適化 */
+    }
+    
+    .checkbox-label:active {
+        background-color: #e8e8e8;
+    }
+    
+    .item-row {
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 8px;
+        touch-action: manipulation;
+    }
+    
+    .item-row.processing {
+        pointer-events: none;
+        opacity: 0.7;
+    }
+    
+    /* 保存インジケーターのモバイル調整 */
+    .admin-saving-indicator {
+        top: 20px !important;
+        right: 10px !important;
+        left: 10px !important;
+        width: auto !important;
+        text-align: center;
+        font-size: 14px;
+        padding: 10px 15px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+}
+
+/* タッチデバイス用の改善 */
+@media (hover: none) and (pointer: coarse) {
+    .checkbox-label {
+        min-height: 48px;
+        padding: 12px 16px;
+    }
+    
+    .progress-tab,
+    .chapter-tab,
+    .section-tab {
+        min-height: 44px;
+        padding: 12px 16px;
+        touch-action: manipulation;
+    }
+    
+    .progress-chapter-header,
+    .subject-header,
+    .subject-add-header {
+        min-height: 48px;
+        touch-action: manipulation;
+        user-select: none;
+        -webkit-touch-callout: none;
+    }
+}
