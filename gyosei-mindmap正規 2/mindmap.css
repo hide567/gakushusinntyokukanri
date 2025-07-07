@@ -1,0 +1,683 @@
+/* mindmap.css - 接続線機能付き修正版 */
+
+.mindmap-container {
+    border: 2px solid #3f51b5;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+    background: #fafafa;
+    box-sizing: border-box;
+}
+
+.mindmap-toolbar {
+    background: #3f51b5;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1000;
+}
+
+.mindmap-btn {
+    background: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    color: #3f51b5;
+    transition: all 0.3s ease;
+}
+
+.mindmap-btn:hover {
+    background: #e8eaf6;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.mindmap-btn:active {
+    transform: translateY(0);
+}
+
+.mindmap-btn.active {
+    background: #4caf50;
+    color: white;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.mindmap-btn.active:hover {
+    background: #45a049;
+}
+
+.mindmap-select {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background: #fff;
+    color: #3f51b5;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.toolbar-help {
+    color: #fff;
+    font-size: 12px;
+    margin-left: auto;
+    opacity: 0.8;
+}
+
+.mindmap-canvas {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 80px);
+    overflow: hidden;
+    background: 
+        radial-gradient(circle, #ddd 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-color: #fafafa;
+}
+
+/* 接続モード時のキャンバススタイル */
+.mindmap-container.connection-mode .mindmap-canvas {
+    cursor: crosshair;
+    background-color: #f0f8ff;
+}
+
+.mindmap-container.connection-mode .toolbar-help::after {
+    content: " | 接続モード: ノードをクリックして接続";
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.mindmap-status {
+    background: #f5f5f5;
+    padding: 8px 15px;
+    border-top: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #666;
+    position: relative;
+    z-index: 1000;
+}
+
+.help-text {
+    color: #999;
+    font-style: italic;
+}
+
+/* ノードのスタイル */
+.mindmap-node {
+    position: absolute;
+    background: #fff;
+    border: 2px solid #3f51b5;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: move;
+    min-width: 120px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    z-index: 10;
+    word-wrap: break-word;
+    user-select: none;
+}
+
+.mindmap-node:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(63, 81, 181, 0.3);
+}
+
+.mindmap-node.selected {
+    border-color: #ff5722;
+    background: #fff3e0;
+    box-shadow: 0 0 15px rgba(255, 87, 34, 0.5);
+}
+
+.mindmap-node.dragging {
+    z-index: 100;
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.mindmap-node.root-node {
+    background: #3f51b5;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    min-width: 140px;
+}
+
+.mindmap-node.child-node {
+    background: #e8eaf6;
+    border-color: #7986cb;
+    font-size: 13px;
+}
+
+/* 接続モード時のノードスタイル */
+.mindmap-node.connection-mode {
+    cursor: pointer;
+    border-color: #4caf50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.mindmap-node.connection-mode:hover {
+    background: #e8f5e9;
+    border-color: #2e7d32;
+    transform: scale(1.1);
+}
+
+.mindmap-node.connection-source {
+    border-color: #ff9800;
+    background: #fff3e0;
+    box-shadow: 0 0 15px rgba(255, 152, 0, 0.6);
+    animation: pulse-orange 1.5s infinite;
+}
+
+@keyframes pulse-orange {
+    0% {
+        box-shadow: 0 0 15px rgba(255, 152, 0, 0.6);
+    }
+    50% {
+        box-shadow: 0 0 25px rgba(255, 152, 0, 0.8);
+    }
+    100% {
+        box-shadow: 0 0 15px rgba(255, 152, 0, 0.6);
+    }
+}
+
+/* 理解済みノードのスタイル */
+.mindmap-node.understood {
+    background: rgba(200, 200, 200, 0.3) !important;
+    color: #666 !important;
+    border-color: #999 !important;
+    opacity: 0.7;
+}
+
+.mindmap-node.understood.root-node {
+    background: rgba(63, 81, 181, 0.3) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.mindmap-node.understood::after {
+    content: "✓";
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #4caf50;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* SVGキャンバス（接続線用） */
+.mindmap-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: auto;
+}
+
+/* 接続線のスタイル */
+.mindmap-connection {
+    stroke: #3f51b5;
+    stroke-width: 2;
+    fill: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.mindmap-connection:hover {
+    stroke: #ff5722;
+    stroke-width: 3;
+    filter: drop-shadow(0 0 5px rgba(255, 87, 34, 0.5));
+}
+
+.mindmap-connection.selected {
+    stroke: #ff5722;
+    stroke-width: 4;
+    filter: drop-shadow(0 0 8px rgba(255, 87, 34, 0.7));
+    animation: pulse-connection 2s infinite;
+}
+
+@keyframes pulse-connection {
+    0% {
+        stroke-width: 4;
+        opacity: 1;
+    }
+    50% {
+        stroke-width: 6;
+        opacity: 0.8;
+    }
+    100% {
+        stroke-width: 4;
+        opacity: 1;
+    }
+}
+
+.mindmap-connection.creating {
+    stroke: #4caf50;
+    stroke-width: 2;
+    stroke-dasharray: 5,5;
+    animation: dash 1s linear infinite;
+}
+
+@keyframes dash {
+    to {
+        stroke-dashoffset: -10;
+    }
+}
+
+/* ノード詳細ホバー */
+.node-detail-popup {
+    position: absolute;
+    background: #fff;
+    border: 2px solid #3f51b5;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    z-index: 200;
+    max-width: 300px;
+    font-size: 12px;
+    line-height: 1.4;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.node-detail-popup.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.node-detail-popup .popup-title {
+    font-weight: bold;
+    color: #3f51b5;
+    margin-bottom: 6px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 4px;
+}
+
+.node-detail-popup .popup-content {
+    color: #666;
+}
+
+/* ノード編集フォーム */
+.node-edit-form {
+    position: absolute;
+    background: #fff;
+    border: 2px solid #3f51b5;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    z-index: 1000;
+    min-width: 280px;
+    max-width: 400px;
+}
+
+.node-edit-form input,
+.node-edit-form textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.node-edit-form input:focus,
+.node-edit-form textarea:focus {
+    outline: none;
+    border-color: #3f51b5;
+    box-shadow: 0 0 5px rgba(63, 81, 181, 0.3);
+}
+
+.node-edit-form .form-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.node-edit-form .form-buttons button {
+    flex: 1;
+    min-width: 60px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.node-edit-form .btn-save {
+    background: #4caf50;
+    color: #fff;
+}
+
+.node-edit-form .btn-save:hover {
+    background: #45a049;
+}
+
+.node-edit-form .btn-cancel {
+    background: #f44336;
+    color: #fff;
+}
+
+.node-edit-form .btn-cancel:hover {
+    background: #da190b;
+}
+
+.node-edit-form .btn-delete {
+    background: #ff9800;
+    color: #fff;
+}
+
+.node-edit-form .btn-delete:hover {
+    background: #f57c00;
+}
+
+.node-edit-form .btn-understand {
+    background: #9c27b0;
+    color: #fff;
+}
+
+.node-edit-form .btn-understand:hover {
+    background: #7b1fa2;
+}
+
+.node-edit-form .btn-understand.understood {
+    background: #666;
+    color: #ccc;
+}
+
+.node-edit-form .btn-understand.understood:hover {
+    background: #9c27b0;
+    color: #fff;
+}
+
+/* 保存状態の表示 */
+.save-status.saved {
+    color: #4caf50;
+    font-weight: bold;
+}
+
+.save-status.saving {
+    color: #ff9800;
+    font-weight: bold;
+}
+
+.save-status.error {
+    color: #f44336;
+    font-weight: bold;
+}
+
+/* テーマ切替 */
+.mindmap-container.theme-dark {
+    background: #2c2c2c;
+}
+
+.mindmap-container.theme-dark .mindmap-canvas {
+    background: 
+        radial-gradient(circle, #555 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-color: #1e1e1e;
+}
+
+.mindmap-container.theme-dark .mindmap-node {
+    background: #424242;
+    border-color: #7986cb;
+    color: #fff;
+}
+
+.mindmap-container.theme-dark .mindmap-node.root-node {
+    background: #7986cb;
+}
+
+.mindmap-container.theme-dark .mindmap-status {
+    background: #333;
+    color: #ccc;
+    border-top-color: #555;
+}
+
+.mindmap-container.theme-dark .toolbar-help {
+    color: #ccc;
+}
+
+.mindmap-container.theme-dark .mindmap-connection {
+    stroke: #7986cb;
+}
+
+.mindmap-container.theme-dark .mindmap-connection:hover,
+.mindmap-container.theme-dark .mindmap-connection.selected {
+    stroke: #ff5722;
+}
+
+.mindmap-container.theme-study {
+    background: #fff8e1;
+}
+
+.mindmap-container.theme-study .mindmap-canvas {
+    background: 
+        radial-gradient(circle, #ffcc02 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-color: #fffde7;
+}
+
+.mindmap-container.theme-study .mindmap-node {
+    background: #fff59d;
+    border-color: #ffa000;
+    color: #333;
+}
+
+.mindmap-container.theme-study .mindmap-node.root-node {
+    background: #ff8f00;
+    color: #fff;
+}
+
+.mindmap-container.theme-study .mindmap-connection {
+    stroke: #ff8f00;
+}
+
+.mindmap-container.theme-study .mindmap-connection:hover,
+.mindmap-container.theme-study .mindmap-connection.selected {
+    stroke: #e65100;
+}
+
+/* フルスクリーンモード */
+.mindmap-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999;
+    border-radius: 0;
+    border: none;
+}
+
+body.mindmap-fullscreen-active {
+    overflow: hidden;
+}
+
+/* アニメーション */
+@keyframes nodeAppear {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.mindmap-node.new-node {
+    animation: nodeAppear 0.3s ease;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(63, 81, 181, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(63, 81, 181, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(63, 81, 181, 0);
+    }
+}
+
+.mindmap-node.selected {
+    animation: pulse 2s infinite;
+}
+
+/* 接続線の先端矢印（オプション） */
+.mindmap-connection-arrow {
+    fill: #3f51b5;
+    stroke: none;
+}
+
+.mindmap-connection.selected .mindmap-connection-arrow {
+    fill: #ff5722;
+}
+
+/* 接続線ラベル（将来の拡張用） */
+.connection-label {
+    font-size: 11px;
+    fill: #666;
+    text-anchor: middle;
+    pointer-events: none;
+    font-family: 'Hiragino Kaku Gothic Pro', 'Meiryo', sans-serif;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+    .mindmap-toolbar {
+        padding: 8px;
+        gap: 6px;
+    }
+    
+    .mindmap-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+    
+    .toolbar-help {
+        display: none;
+    }
+    
+    .mindmap-node {
+        min-width: 100px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .mindmap-node.root-node {
+        min-width: 120px;
+        font-size: 14px;
+    }
+    
+    .node-edit-form {
+        min-width: 200px;
+        max-width: 280px;
+        padding: 12px;
+    }
+    
+    .mindmap-status {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+    
+    .mindmap-status .help-text {
+        display: none;
+    }
+    
+    .mindmap-connection {
+        stroke-width: 3;
+    }
+    
+    .mindmap-connection:hover,
+    .mindmap-connection.selected {
+        stroke-width: 4;
+    }
+}
+
+@media (max-width: 480px) {
+    .mindmap-toolbar {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .mindmap-toolbar > * {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .mindmap-canvas {
+        height: calc(100% - 140px);
+    }
+    
+    .node-edit-form {
+        left: 10px !important;
+        right: 10px;
+        width: auto !important;
+        min-width: auto;
+    }
+    
+    /* モバイルでは接続線を太くして操作しやすく */
+    .mindmap-connection {
+        stroke-width: 4;
+    }
+    
+    .mindmap-connection:hover,
+    .mindmap-connection.selected {
+        stroke-width: 6;
+    }
+}
+
+/* 接続モード時の視覚的フィードバック */
+.mindmap-container.connection-mode::before {
+    content: "接続モード：ノードをクリックして接続してください";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(76, 175, 80, 0.9);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    z-index: 50;
+    animation: fadeInOut 3s ease-in-out;
+    pointer-events: none;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+    20% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    80% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0; transform: translate(-50%, -50%) scale(0.8); }
+}
